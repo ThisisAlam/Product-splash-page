@@ -1,3 +1,6 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
 body {
     font-family: 'Source Sans Pro', sans-serif;
     color: #404040;
@@ -7,18 +10,68 @@ body {
 /* =================
     Typography 
    ================= */
+/* 
+  Challenge: Set the initial styles for text
+    - Set the paragraph to a relative font-size value equal to 18px
+    - Set the p line-height to 1.35 times its font-size value
+    - Give .subheading a bottom margin in em equal to half its font-size value
+*/
 
 h1 {
+    font-size: 2.5rem;
     font-weight: 400;
+    text-shadow: 0 2px 2px #816fca;
 }
-
+h2{
+    font-size: 2.25rem;
+    margin: 0.167em 0;
+}
+p{
+    font-size: 1.125rem;
+    line-height: 1.35;
+}
 .beta-text { 
     font-weight: 900;
 }
-
+.beta-text, .subheading{
+    text-transform: uppercase;
+}
 .subheading {
     color: #575757;
     font-weight: 900;
+    margin-bottom: 0.5em;
+}
+
+.beta-text,
+.top-text,
+.subheading {
+    text-transform: uppercase;
+}
+
+/* 
+  Challenge: 
+    Adjust the visual order of .top-text and re-distribute
+    the space inside .intro: 
+      - Display .top-text above the h1 and align it to 
+        the top edge of the .intro section
+      - Evenly distribute the content inside .intro
+      - The top border of .top-text should match the width of the text
+*/
+
+.top-text {
+    font-size: 0.875rem;
+    font-weight: 900;
+    padding-top: 0.25em;
+    border-top: 5px solid;
+    order: -1;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.fine-print {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #858585;
 }
 
 /* =================
@@ -37,24 +90,130 @@ h1 {
 
 .intro { 
     color: #fff;
-    background-color: #9480e4;
-    display:flex;
-    flex-direction: column;
+    /* background-color: #9480e4; */
+    justify-content: space-between;
     min-height: 16.875rem;
     margin: 0 auto;
     text-align: center;
+    background: #9480e4 url('images/intro-bg.png');
+    background-size: cover;
+    padding-bottom: 1.5em;
 }
 
 /* ====================
     Main content
    ==================== */
-
+.main-content p, form{
+    max-width: 450px;
+}
+.intro, .main-content{
+    padding: 0 2em;
+    display:flex;
+    flex-direction: column;
+}
+.main-content{
+    align-items: center;
+    padding-top: 2.5em;
+    width: 100%;
+}
+p{
+    text-align: left;
+    text-align: center;
+}
+.img-main{
+    width:120px;
+    height: 140px;
+    border-radius: 30%;
+    border: 2px solid #816fca;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.img-main:hover {
+    transform: scale(1.05);
+    filter: brightness(1.03);
+    box-shadow: 0 0 10px #b9aee7;
+}
 
 /* =================
     Form
    ================= */
-   
+   form{
+    width: 100%;
+   }
+   input, .btn {
+    font-family: inherit;
+    width: 100%;
+    border-radius: 5px;
+   }
+   input{
+    display: block;
+    padding: 0.5em;
+    margin-bottom: 0.75em;
+    border: 2px solid grey;
+    /* box-sizing: border-box; */
+   }
+   input:focus{
+    outline: none;
+    background-color: #e6e8ec;
+    border-color: #8a71ec;
+   }
+   .btn {
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 1px;
+        padding: 1em 0;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        color: white;
+        background-color: #8a71ec;
+        margin-top: 1em;    
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: #b7a7f6;
+    }
 
 /* =================
     Media queries 
    ================= */
+@media (min-width:576px){
+    body{
+        display: flex;
+    }
+    .intro, .main-content{
+        width: 50%;
+        /* flex-basis: 50%; */
+        /* flex: 1; */
+    }
+    .intro{
+        min-height: 100vh;
+    }
+    .main-content{
+        padding-top: 0;
+        justify-content: center;
+    }
+    h1{font-size: 5vw;}
+    h2{font-size: 2.625rem;}
+    .beta-text{font-size: 1.25rem;}
+
+}
+/* 
+  Challenge: Adjust text for wider screens
+    - In the media query, increase the h1 font-size to
+      a rem value equal to 52px
+    - Increase the h2 font-size to a rem value equal to 42px
+    - Increase the font-size of .beta-text to a 
+      rem value equal to 20px
+*/
+  /* 
+  Challenge: Adjust the layout for wider screens
+    - Add a media query that targets a browser width of 576px or wider
+    - Within the media query, convert the parent element of .intro and 
+      .main-content to a flex container
+    - Set the width .intro and .main-content to exactly
+      half the total width of their parent container
+*/
